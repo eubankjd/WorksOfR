@@ -98,7 +98,6 @@ puzzle = rbind(   c(4, 9, 0,     0, 0, 0,     2, 3, 0),
 toSolve = which(puzzle == 0, arr.ind=TRUE)
 i = 1
 while(i <= nrow(toSolve)) {
-    numGuesses = numGuesses +1
     rowNum = toSolve[i,1]
     colNum = toSolve[i,2]
     success = solveCell(rowNum,colNum)
