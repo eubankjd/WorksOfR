@@ -3,7 +3,9 @@ library(jsonlite)
 
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
-wordList <- fromJSON("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json")
+wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json")),
+                  collapse="")
+wordList <- fromJSON(wordList)
 wordList <- lapply(wordList,unlist)
 
 gen_text <- function(max_words=200,stop_prob=0.5) {
