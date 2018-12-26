@@ -1,10 +1,12 @@
 library(shiny)
-library(rvest)
+library(jsonlite)
 
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
 # wordList <- readRDS("krugman_wordlist.RData")
-wordList <- read("https://github.com/eubankjd/WorksOfR/raw/master/krugman_wordlist.RData")
+wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/wordlist.json")),collapse="")
+wordList <- fromJSON(wordList)
+wordList <- lapply(wordList,unlist)
 
 gen_text <- function(max_words=200,stop_prob=0.5) {
     
