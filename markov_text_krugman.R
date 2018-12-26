@@ -66,65 +66,6 @@ for(url in urls) {
 }
 
 wordListJSON <- toJSON(lapply(wordList, as.list),pretty=TRUE,unbox=TRUE)
-write(wordListJSON,"wordlist.json")
+write(wordListJSON,"nytimes_wordlist.json")
 
-saveRDS(wordList,"krugman_wordlist2.RData")
-
-
-########## CREATE NEW TEXT
-
-gen_text <- function(max_words=200,stop_prob=0.5) {
-    
-    outwords <- c()
-    
-    puncs <- c(",","\\.","?","!",";",":")
-    
-    # First pair; pick one that starts with a capital letter
-    first_words <- grep("^[A-Z][a-z]* [a-z]*",names(wordList),value=TRUE)
-    pair <- sample(first_words,1)
-    
-    outwords <- c(outwords, pair)
-    
-    word_num <- 1
-    for(i in 1:max_words) {
-        
-        # Get counts of candidate third words
-        candidate_thirds <- wordList[[pair]]
-        
-        # Get probabilities for third word candidates
-        candidate_thirds_probs <- candidate_thirds/sum(candidate_thirds)
-        
-        # If there is no candidate third, break
-        if(is.null(wordList[[pair]])) {
-            break
-        } else {
-            third <- sample(names(candidate_thirds),1,prob=candidate_thirds_probs)
-            outwords <- c(outwords, third)
-        }
-        
-        # If third is end of sentence, end with probability stop_prob
-        if(third %in% c(".","?","!")) {
-            p <- runif(1)
-            if(p < stop_prob) {
-                break
-            }
-        }
-        
-        # Create new pair using second and third words
-        pair <- unlist(strsplit(paste(pair,third),split="[ ]+"))[2:3]
-        pair <- paste(pair, collapse=" ")
-    }
-
-    # Reassemble output
-    output <- paste(outwords,collapse=" ")
-    
-    # Remove extra spaces around punctuation
-    output <- gsub(" ([\\.|,|?|!|;|:]) ","\\1 ",output)
-    output <- gsub(" ([\\.|?|!])","\\1",output)
-    
-    return(output)
-    
-}
-
-txt <- gen_text(200,stop_prob=0.2)
-# txt2 <- iconv(txt,from="UTF-8",to="latin1")
+saveRDS(wordList,"nytimes_wordlist.RData")
