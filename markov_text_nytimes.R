@@ -43,7 +43,7 @@ for(url in urls) {
     print(paste("Reading",url))
     
     # Get the article text
-    html <- read_html(url)
+    html <- read_html(url, encoding="utf8")
     paragraphs <- html_nodes(html,"p.css-1ygdjhk.e2kc3sl0")
     articletext <- paste(html_text(paragraphs), collapse=" ")
     
