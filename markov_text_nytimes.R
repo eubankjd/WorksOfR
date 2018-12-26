@@ -55,7 +55,7 @@ for(url in urls) {
     articletext <- stri_trans_nfc(articletext)
     articletext <- gsub("\u201c|\u201d","\"",articletext)
     articletext <- gsub("\u2019","'",articletext)
-    articletext <- gsub("\u0096|\u0097|\u2014","HEEEEEEYY",articletext)
+    articletext <- gsub("\u0096|\u0097|\u2014","-",articletext)
     
     # Get vector of words in order
     articlewords <- unlist(strsplit(articletext, split="[ ]+"))

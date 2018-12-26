@@ -113,7 +113,7 @@
   "Donald Trump": {
     ",": [4],
     "and": [1],
-    "HEEEEEEYY": [1],
+    "-": [1],
     "isn't": [1],
     "because": [1],
     ".": [1]
@@ -408,13 +408,13 @@
     "structural": [1]
   },
   "a whole": {
-    "HEEEEEEYY": [1],
+    "-": [1],
     ".": [1]
   },
-  "whole HEEEEEEYY": {
+  "whole -": {
     "protection": [1]
   },
-  "HEEEEEEYY protection": {
+  "- protection": {
     "for": [1]
   },
   "protection for": {
@@ -493,12 +493,12 @@
     "expansion": [1]
   },
   "Medicaid expansion": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "expansion HEEEEEEYY": {
+  "expansion -": {
     "unconstitutional": [1]
   },
-  "HEEEEEEYY unconstitutional": {
+  "- unconstitutional": {
     ".": [1]
   },
   "unconstitutional .": {
@@ -1309,12 +1309,12 @@
     "America": [1]
   },
   "in America": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "America HEEEEEEYY": {
+  "America -": {
     "what": [1]
   },
-  "HEEEEEEYY what": {
+  "- what": {
     "we've": [1]
   },
   "what we've": {
@@ -1383,12 +1383,12 @@
     "it": [1]
   },
   "acknowledge it": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "it HEEEEEEYY": {
+  "it -": {
     "is": [1]
   },
-  "HEEEEEEYY is": {
+  "- is": {
     "an": [1],
     "completely": [1]
   },
@@ -1685,24 +1685,24 @@
     "money": [1]
   },
   "big money": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "money HEEEEEEYY": {
+  "money -": {
     "often": [1]
   },
-  "HEEEEEEYY often": {
+  "- often": {
     "deployed": [1]
   },
   "often deployed": {
     "stealthily": [1]
   },
   "deployed stealthily": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "stealthily HEEEEEEYY": {
+  "stealthily -": {
     "and": [1]
   },
-  "HEEEEEEYY and": {
+  "- and": {
     "the": [1],
     "we'd": [1],
     "who": [1]
@@ -2416,12 +2416,12 @@
     "consent": [1]
   },
   "plain consent": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "consent HEEEEEEYY": {
+  "consent -": {
     "there": [1]
   },
-  "HEEEEEEYY there": {
+  "- there": {
     "is": [1]
   },
   "there is": {
@@ -4431,12 +4431,12 @@
     "Moola": [1]
   },
   "that Moola": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Moola HEEEEEEYY": {
+  "Moola -": {
     "financial": [1]
   },
-  "HEEEEEEYY financial": {
+  "- financial": {
     "payoffs": [1]
   },
   "financial payoffs": {
@@ -4465,12 +4465,12 @@
     "tariffs": [1]
   },
   "Trump Organization": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Organization HEEEEEEYY": {
+  "Organization -": {
     "plays": [1]
   },
-  "HEEEEEEYY plays": {
+  "- plays": {
     "an": [1]
   },
   "plays an": {
@@ -5135,12 +5135,12 @@
     "interests": [1]
   },
   "corporate interests": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "interests HEEEEEEYY": {
+  "interests -": {
     "stocks": [1]
   },
-  "HEEEEEEYY stocks": {
+  "- stocks": {
     "fall": [1]
   },
   "stocks fall": {
@@ -5617,12 +5617,12 @@
     "Agreement\"": [1]
   },
   "\"U.S.-Mexico-Canada Agreement\"": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Agreement\" HEEEEEEYY": {
+  "Agreement\" -": {
     "or": [1]
   },
-  "HEEEEEEYY or": {
+  "- or": {
     "as": [1]
   },
   "or as": {
@@ -5659,9 +5659,9 @@
     "Prince.\")": [1]
   },
   "as Prince\"": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Prince\" HEEEEEEYY": {
+  "Prince\" -": {
     "is": [1]
   },
   "is completely": {
@@ -5712,7 +5712,7 @@
   },
   "of state": {
     "are": [1],
-    "HEEEEEEYY": [1],
+    "-": [1],
     "legislatures": [1]
   },
   "state are": {
@@ -6197,12 +6197,12 @@
     "authors": [1]
   },
   "the authors": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "authors HEEEEEEYY": {
+  "authors -": {
     "professors": [1]
   },
-  "HEEEEEEYY professors": {
+  "- professors": {
     "of": [1]
   },
   "professors of": {
@@ -6215,13 +6215,13 @@
     "Harvard": [1]
   },
   "at Harvard": {
-    "HEEEEEEYY": [1],
+    "-": [1],
     "or": [2]
   },
-  "Harvard HEEEEEEYY": {
+  "Harvard -": {
     "point": [1]
   },
-  "HEEEEEEYY point": {
+  "- point": {
     "out": [1]
   },
   "point out": {
@@ -6691,12 +6691,12 @@
     "tactics": [1]
   },
   "similar tactics": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "tactics HEEEEEEYY": {
+  "tactics -": {
     "not": [1]
   },
-  "HEEEEEEYY not": {
+  "- not": {
     "at": [1]
   },
   "not at": {
@@ -6967,12 +6967,12 @@
     "Georgia": [1]
   },
   "of Georgia": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Georgia HEEEEEEYY": {
+  "Georgia -": {
     "who": [1]
   },
-  "HEEEEEEYY who": {
+  "- who": {
     "oversaw": [1]
   },
   "who oversaw": {
@@ -6997,10 +6997,10 @@
   "secretary of": {
     "state": [1]
   },
-  "state HEEEEEEYY": {
+  "state -": {
     "have": [1]
   },
-  "HEEEEEEYY have": {
+  "- have": {
     "won": [1]
   },
   "have won": {
@@ -7436,12 +7436,12 @@
     "elections": [1]
   },
   "Assembly elections": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "elections HEEEEEEYY": {
+  "elections -": {
     "but": [1]
   },
-  "HEEEEEEYY but": {
+  "- but": {
     "they": [1]
   },
   "but they": {
@@ -7896,9 +7896,9 @@
     "control": [1]
   },
   "maintained control": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "control HEEEEEEYY": {
+  "control -": {
     "and": [1]
   },
   "and we'd": {
@@ -8303,12 +8303,12 @@
     "knows": [1]
   },
   "Nobody knows": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "knows HEEEEEEYY": {
+  "knows -": {
     "because": [1]
   },
-  "HEEEEEEYY because": {
+  "- because": {
     "it": [1]
   },
   "because it": {
@@ -10342,12 +10342,12 @@
     "everyone": [1]
   },
   "at everyone": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "everyone HEEEEEEYY": {
+  "everyone -": {
     "tariffs": [1]
   },
-  "HEEEEEEYY tariffs": {
+  "- tariffs": {
     "on": [1]
   },
   "tariffs on": {
@@ -10375,9 +10375,9 @@
     "?": [1]
   },
   "Really ?": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "? HEEEEEEYY": {
+  "? -": {
     "and": [1]
   },
   "and who": {
@@ -10550,10 +10550,10 @@
   "fealty to": {
     "Donald": [1]
   },
-  "Trump HEEEEEEYY": {
+  "Trump -": {
     "the": [1]
   },
-  "HEEEEEEYY the": {
+  "- the": {
     "party's": [1],
     "notion": [1]
   },
@@ -10899,7 +10899,7 @@
   },
   "global warming": {
     ".": [1],
-    "HEEEEEEYY": [1],
+    "-": [1],
     ",": [1]
   },
   "warming .": {
@@ -10937,12 +10937,12 @@
     ".": [1]
   },
   "is today": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "today HEEEEEEYY": {
+  "today -": {
     "a": [1]
   },
-  "HEEEEEEYY a": {
+  "- a": {
     "party": [1],
     "\"gigantic": [1]
   },
@@ -11279,10 +11279,10 @@
     "global": [1],
     "this": [1]
   },
-  "warming HEEEEEEYY": {
+  "warming -": {
     "evidence": [1]
   },
-  "HEEEEEEYY evidence": {
+  "- evidence": {
     "that": [1]
   },
   "evidence that": {
@@ -11307,11 +11307,11 @@
     "denial": [1]
   },
   "climate scientists": {
-    "HEEEEEEYY": [1],
+    "-": [1],
     "have": [1],
     "at": [1]
   },
-  "scientists HEEEEEEYY": {
+  "scientists -": {
     "a": [1]
   },
   "a \"gigantic": {
@@ -11545,12 +11545,12 @@
     "people": [1]
   },
   "are people": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "people HEEEEEEYY": {
+  "people -": {
     "occasionally": [1]
   },
-  "HEEEEEEYY occasionally": {
+  "- occasionally": {
     "snappish": [1]
   },
   "occasionally snappish": {
@@ -12410,12 +12410,12 @@
     "results": [1]
   },
   "catastrophic results": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "results HEEEEEEYY": {
+  "results -": {
     "which": [1]
   },
-  "HEEEEEEYY which": {
+  "- which": {
     "seems": [1]
   },
   "which seems": {
@@ -12425,12 +12425,12 @@
     "too": [1]
   },
   "too likely": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "likely HEEEEEEYY": {
+  "likely -": {
     "it": [1]
   },
-  "HEEEEEEYY it": {
+  "- it": {
     "won't": [1],
     "would": [1]
   },
@@ -12813,13 +12813,13 @@
     "about": [1]
   },
   "the face": {
-    "HEEEEEEYY": [1],
+    "-": [1],
     "of": [1]
   },
-  "face HEEEEEEYY": {
+  "face -": {
     "that": [1]
   },
-  "HEEEEEEYY that": {
+  "- that": {
     "sneering": [1],
     "gets": [1]
   },
@@ -13243,9 +13243,9 @@
     "hypothesis": [1]
   },
   "anxiety\" hypothesis": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "hypothesis HEEEEEEYY": {
+  "hypothesis -": {
     "the": [1]
   },
   "the notion": {
@@ -14346,12 +14346,12 @@
     "Clinton": [1]
   },
   "Bill Clinton": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Clinton HEEEEEEYY": {
+  "Clinton -": {
     "in": [1]
   },
-  "HEEEEEEYY in": {
+  "- in": {
     "which": [1]
   },
   "which he": {
@@ -14391,12 +14391,12 @@
     "clear\"": [1]
   },
   "behavior clear\"": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "clear\" HEEEEEEYY": {
+  "clear\" -": {
     "shows": [1]
   },
-  "HEEEEEEYY shows": {
+  "- shows": {
     "rage": [1]
   },
   "shows rage": {
@@ -14601,12 +14601,12 @@
     "like": [1]
   },
   "like Kavanaugh": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "Kavanaugh HEEEEEEYY": {
+  "Kavanaugh -": {
     "hard-partying": [1]
   },
-  "HEEEEEEYY hard-partying": {
+  "- hard-partying": {
     "sons": [1]
   },
   "hard-partying sons": {
@@ -14926,9 +14926,9 @@
     "about": [1]
   },
   "about \"populism\"": {
-    "HEEEEEEYY": [1]
+    "-": [1]
   },
-  "\"populism\" HEEEEEEYY": {
+  "\"populism\" -": {
     "it": [1]
   },
   "would be": {
@@ -15669,7 +15669,7 @@
   },
   "Great Shortfall": {
     "Economists": [1],
-    "HEEEEEEYY": [1],
+    "-": [1],
     "followed": [1],
     "varies": [1],
     ":": [1],
@@ -16430,7 +16430,7 @@
   "it the": {
     "Great": [1]
   },
-  "Shortfall HEEEEEEYY": {
+  "Shortfall -": {
     "that": [1]
   },
   "that gets": {
