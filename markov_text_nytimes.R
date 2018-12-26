@@ -38,11 +38,6 @@ urls <- c("https://www.nytimes.com/2018/12/17/opinion/republican-apparatchiks-de
           "https://www.nytimes.com/2018/10/01/opinion/kavanaugh-white-male-privilege.html",
           "https://www.nytimes.com/2018/09/30/opinion/the-economic-future-isnt-what-it-used-to-be-wonkish.html")
 
-# Encode curly quotes for gsub
-sq <- stri_trans_nfc("’")
-dql <- stri_trans_nfc("“")
-dqr <- stri_trans_nfc("”")
-
 for(url in urls) {
     
     print(paste("Reading",url))
@@ -56,10 +51,10 @@ for(url in urls) {
     # i.e., Consider punctuation marks as their own words
     articletext <- gsub("([A-Za-z0-9])([\\.|?|!|:|;|,]) ", "\\1 \\2 ", articletext)
     
-    # Replace curly quotes
-    articletext <- gsub(dql,"\"",articletext)
-    articletext <- gsub(dqr,"\"",articletext)
-    articletext <- gsub(sq,"'",articletext)
+    # Convert encoding and replace curly quotes
+    articletext <- stri_trans_nfc(articletext)
+    articletext <- gsub("\u201c|\u201d","\"",articletext)
+    articletext <- gsub("\u2019","'",articletext)
     
     # Get vector of words in order
     articlewords <- unlist(strsplit(articletext, split="[ ]+"))
