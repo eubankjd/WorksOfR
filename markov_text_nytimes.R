@@ -51,11 +51,11 @@ for(url in urls) {
     # i.e., Consider punctuation marks as their own words
     articletext <- gsub("([A-Za-z0-9])([\\.|?|!|:|;|,]) ", "\\1 \\2 ", articletext)
     
-    # Convert encoding and replace curly quotes and emdashes
-    articletext <- stri_trans_nfc(articletext)
-    articletext <- gsub("\u201c|\u201d","\"",articletext)
-    articletext <- gsub("\u2019","'",articletext)
-    articletext <- gsub("\u0096|\u0097|\u2014","-",articletext)
+    # # Convert encoding and replace curly quotes and emdashes
+    # articletext <- stri_trans_nfkc(articletext)
+    # articletext <- gsub("\u201c|\u201d","\"",articletext)
+    # articletext <- gsub("\u2019","'",articletext)
+    # articletext <- gsub("\u0096|\u0097|\u2014","-",articletext)
     
     # Get vector of words in order
     articlewords <- unlist(strsplit(articletext, split="[ ]+"))
