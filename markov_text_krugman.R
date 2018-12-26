@@ -68,7 +68,6 @@ for(url in urls) {
 wordListJSON <- toJSON(lapply(wordList, as.list),pretty=TRUE)
 write(wordListJSON,"wordlist.json")
 
-
 saveRDS(wordList,"krugman_wordlist2.RData")
 
 
