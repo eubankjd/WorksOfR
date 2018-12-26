@@ -48,7 +48,7 @@ for(url in urls) {
     articletext <- paste(html_text(paragraphs), collapse=" ")
     
     # Convert encoding
-    articletext <- iconv(articletext,from="utf8",to="latin1")
+    # articletext <- iconv(articletext,from="utf8",to="latin1")
     
     # Separate punctuation from the preceeding word
     # i.e., Consider punctuation marks as their own words

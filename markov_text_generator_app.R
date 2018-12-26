@@ -4,7 +4,9 @@ library(jsonlite)
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
 # wordList <- readRDS("krugman_wordlist.RData")
-wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/wordlist.json"),encoding="latin1"),collapse="")
+wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/wordlist.json"),
+                            encoding="latin1"),
+                  collapse="")
 wordList <- fromJSON(wordList)
 wordList <- lapply(wordList,unlist)
 
@@ -57,7 +59,7 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
     output <- gsub(" ([\\.|,|?|!|;|:]) ","\\1 ",output)
     output <- gsub(" ([\\.|?|!])","\\1",output)
     
-    output <- iconv(output,from="latin1",to="utf8")
+    # Fix quotes from encoding issues
     
     return(output)
     
