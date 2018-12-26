@@ -66,7 +66,7 @@ for(url in urls) {
 }
 
 # Convert to JSON; use text editor to adjust encoding
-wordListJSON <- toJSON(lapply(wordList, as.list),pretty=TRUE,unbox=TRUE)
+wordListJSON <- toJSON(lapply(wordList, as.list),pretty=TRUE,unbox=TRUE,encoding="UTF8")
 write(wordListJSON,"nytimes_wordlist.json")
 
 # Save RData version
