@@ -3,7 +3,7 @@ library(jsonlite)
 
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
-wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/wordlist.json"),
+wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json"),
                             encoding="latin1"),
                   collapse="")
 wordList <- fromJSON(wordList)
