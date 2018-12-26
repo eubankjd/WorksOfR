@@ -1,6 +1,6 @@
 library(rvest)
-library(stringi)
 library(jsonlite)
+library(stringi)
 
 # Initialize list to store word combinations
 wordList <- list()
@@ -38,21 +38,28 @@ urls <- c("https://www.nytimes.com/2018/12/17/opinion/republican-apparatchiks-de
           "https://www.nytimes.com/2018/10/01/opinion/kavanaugh-white-male-privilege.html",
           "https://www.nytimes.com/2018/09/30/opinion/the-economic-future-isnt-what-it-used-to-be-wonkish.html")
 
+# Encode curly quotes for gsub
+sq <- stri_trans_nfc("’")
+dql <- stri_trans_nfc("“")
+dqr <- stri_trans_nfc("”")
+
 for(url in urls) {
     
     print(paste("Reading",url))
     
     # Get the article text
-    html <- read_html(url, encoding="utf8")
+    html <- read_html(url)
     paragraphs <- html_nodes(html,"p.css-1ygdjhk.e2kc3sl0")
     articletext <- paste(html_text(paragraphs), collapse=" ")
-    
-    # Convert encoding
-    # articletext <- iconv(articletext,from="utf8",to="latin1")
     
     # Separate punctuation from the preceeding word
     # i.e., Consider punctuation marks as their own words
     articletext <- gsub("([A-Za-z0-9])([\\.|?|!|:|;|,]) ", "\\1 \\2 ", articletext)
+    
+    # Replace curly quotes
+    articletext <- gsub(dql,"\"",articletext)
+    articletext <- gsub(dqr,"\"",articletext)
+    articletext <- gsub(sq,"'",articletext)
     
     # Get vector of words in order
     articlewords <- unlist(strsplit(articletext, split="[ ]+"))
@@ -69,7 +76,9 @@ for(url in urls) {
     }
 }
 
+# Convert to JSON
 wordListJSON <- toJSON(lapply(wordList, as.list),pretty=TRUE,unbox=TRUE)
 write(wordListJSON,"nytimes_wordlist.json")
 
+# Save RData version
 saveRDS(wordList,"nytimes_wordlist.RData")

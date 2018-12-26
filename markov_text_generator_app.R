@@ -3,7 +3,6 @@ library(jsonlite)
 
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
-# wordList <- readRDS("krugman_wordlist.RData")
 wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/wordlist.json"),
                             encoding="latin1"),
                   collapse="")
@@ -60,6 +59,8 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
     output <- gsub(" ([\\.|?|!])","\\1",output)
     
     # Fix quotes from encoding issues
+    output <- gsub("\U0093|\U0094","\"",output)
+    output <- gsub("\U0092","'",output)
     
     return(output)
     
