@@ -50,6 +50,7 @@ for(url in urls) {
     articletext <- iconv(articletext,from="utf8",to="utf8")
     articletext <- gsub("\u201c|\u201d","\"",articletext)
     articletext <- gsub("\u2019","'",articletext)
+    articletext <- gsub("\u0096|\u0097","-",articletext)
     
     # Separate punctuation from the preceeding word
     # i.e., Consider punctuation marks as their own words

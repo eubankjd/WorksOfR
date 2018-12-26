@@ -3,7 +3,8 @@ library(jsonlite)
 
 ########## TEXT GENERATOR DATA AND FUNCTIONS
 
-wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json")),
+wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json"),
+                            encoding="latin1"),
                   collapse="")
 wordList <- fromJSON(wordList)
 wordList <- lapply(wordList,unlist)
@@ -105,7 +106,13 @@ ui <- fluidPage(
         mainPanel(
             
             # Output: generated text
-            textOutput("text")
+            textOutput("text"),
+            
+            # Adding the new div tag to the sidebar            
+            tags$div(tags$br(),
+                     tags$p("These texts are randomly generated and 
+                            should not be interpreted as an endorsement of any particular idealogy."),
+                     style="color:gray;font-size:9px;")
             
         )
     )
@@ -113,7 +120,7 @@ ui <- fluidPage(
 
 # Define server logic to call gen_text
 server <- function(input, output, session) {
-
+    
     text <- eventReactive(input$generate, {
         stop_prob <- input$stop_prob
         max_words <- input$max_words
