@@ -58,9 +58,8 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
     output <- gsub(" ([\\.|,|?|!|;|:]) ","\\1 ",output)
     output <- gsub(" ([\\.|?|!])","\\1",output)
     
-    # Fix quotes from encoding issues
-    output <- gsub("\U0093|\U0094","\"",output)
-    output <- gsub("\U0092","'",output)
+    # Catch remaining encoding issues
+    output <- gsub("\U0097|\U0096","-",output)
     
     return(output)
     
@@ -98,7 +97,10 @@ ui <- fluidPage(
             
             # Adding the new div tag to the sidebar            
             tags$div(tags$br(),
-                     tags$p("The text generator uses a second order Markov chain."))
+                     tags$p("The text generator uses a second order Markov chain. For more information,
+                            see",
+                            tags$a(href = "https://worksofr.wordpress.com/2018/12/24/markov-chain-text-generator/", "WorksOfR.")),
+                     style="font-size:11px;")
             
         ),
         
@@ -111,8 +113,10 @@ ui <- fluidPage(
             # Adding the new div tag to the sidebar            
             tags$div(tags$br(),
                      tags$p("These texts are randomly generated and 
-                            should not be interpreted as an endorsement of any particular idealogy."),
-                     style="color:gray;font-size:9px;")
+                            should not be interpreted as an endorsement of any particular idealogy.
+                            The source columns used to generate the text can be found at",
+                            tags$a(href = "https://www.nytimes.com/column/paul-krugman", "nytimes.com.")),
+                     style="color:gray;font-size:11 px;")
             
         )
     )

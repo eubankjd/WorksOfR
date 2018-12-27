@@ -1,4 +1,0 @@
-/ExtraCode
-/Graphics
-/Carols
-.Rhistory
