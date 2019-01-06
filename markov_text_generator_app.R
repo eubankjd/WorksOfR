@@ -1,3 +1,7 @@
+# Daniel Eubanks
+# January 2019
+# WorksOfR.wordpress.com
+
 library(shiny)
 library(jsonlite)
 

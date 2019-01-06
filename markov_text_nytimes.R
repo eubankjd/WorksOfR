@@ -1,10 +1,14 @@
+# Daniel Eubanks
+# January 2019
+# WorksOfR.wordpress.com
+
 library(rvest)
 library(jsonlite)
 
 # Initialize list to store word combinations
 wordList <- list()
 
-########## SCRAPE SATA FROM NYTIMES
+########## SCRAPE DATA FROM NYTIMES
 
 urls <- c("https://www.nytimes.com/2018/12/17/opinion/republican-apparatchiks-deep-state.html",
           "https://www.nytimes.com/2018/12/13/opinion/trump-wall-trade-tariffs.html",
