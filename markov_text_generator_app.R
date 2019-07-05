@@ -74,8 +74,32 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
 # Define UI for text generator app 
 ui <- fluidPage(
     
+    tags$head(
+        tags$style(HTML("
+                        @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
+                        @import url('//fonts.googleapis.com/css?family=Literota|Cabin:400,700');
+                        
+                        h1 {
+                        font-family: 'Literota', serif;
+                        font-weight: bold;
+                        font-size: 48pt;
+                        }
+                        
+                        p {
+                        font-family: 'Literota', serif;
+                        font-size: 12pt;
+                        }
+
+                        #text {
+                        font-family: 'Literota', serif;
+                        font-size: 14pt;
+                        }
+                        
+                        "))
+    ),
+    
     # App title 
-    titlePanel("New York Times Column Generator"),
+    headerPanel("New York Times Column Generator"),
     
     # Sidebar layout with a input and output definitions 
     sidebarLayout(
