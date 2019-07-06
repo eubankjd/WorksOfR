@@ -1,8 +1,12 @@
+# Daniel Eubanks
+# July 2019
+# WorksOfR.wordpress.com
+
 library(shiny)
 library(data.table)
 library(ggplot2)
 
-#----------------------------------------------------------------------------------------
+# Minimax algorithm ---------------------------------------------------------------------
 
 COL <- 7
 ROW <- 5
@@ -131,7 +135,7 @@ drop_in_col <- function(state, col) {
     return(state)
 }
 
-# ---------------------------------------------------------------------------------------
+# Shiny code ----------------------------------------------------------------------------
 
 # Define UI for application
 ui <- fluidPage(
