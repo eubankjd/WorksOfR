@@ -1,27 +1,28 @@
 # Daniel Eubanks
-# January 2019
+# January 2019 (Updated: July 2019)
 # WorksOfR.wordpress.com
 
 library(shiny)
 library(jsonlite)
 
-########## TEXT GENERATOR DATA AND FUNCTIONS
+# TEXT GENERATOR DATA AND FUNCTIONS -----------------------------------------------------
 
 wordList <- paste(readLines(url("https://github.com/eubankjd/WorksOfR/raw/master/nytimes_wordlist.json"),
                             encoding="latin1"),
                   collapse="")
 wordList <- fromJSON(wordList)
-wordList <- lapply(wordList,unlist)
+wordList <- lapply(wordList, unlist)
 
-gen_text <- function(max_words=200,stop_prob=0.5) {
+# Generate text
+gen_text <- function(max_words, stop_prob) {
     
     outwords <- c()
     
-    puncs <- c(",","\\.","?","!",";",":")
+    puncs <- c(", ", "\\.", "?", "!", ";", ":")
     
     # First pair; pick one that starts with a capital letter
-    first_words <- grep("^[A-Z][a-z]* [a-z]*",names(wordList),value=TRUE)
-    pair <- sample(first_words,1)
+    first_words <- grep("^[A-Z][a-z]* [a-z]*", names(wordList), value=TRUE)
+    pair <- sample(first_words, 1)
     
     outwords <- c(outwords, pair)
     
@@ -38,12 +39,12 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
         if(is.null(wordList[[pair]])) {
             break
         } else {
-            third <- sample(names(candidate_thirds),1,prob=candidate_thirds_probs)
+            third <- sample(names(candidate_thirds), 1, prob=candidate_thirds_probs)
             outwords <- c(outwords, third)
         }
         
         # If third is end of sentence, end with probability stop_prob
-        if(third %in% c(".","?","!")) {
+        if(third %in% c(".", "?", "!")) {
             p <- runif(1)
             if(p < stop_prob) {
                 break
@@ -51,79 +52,94 @@ gen_text <- function(max_words=200,stop_prob=0.5) {
         }
         
         # Create new pair using second and third words
-        pair <- unlist(strsplit(paste(pair,third),split="[ ]+"))[2:3]
+        pair <- unlist(strsplit(paste(pair, third), split="[ ]+"))[2:3]
         pair <- paste(pair, collapse=" ")
     }
     
     # Reassemble output
-    output <- paste(outwords,collapse=" ")
+    output <- paste(outwords, collapse=" ")
     
     # Remove extra spaces around punctuation
-    output <- gsub(" ([\\.|,|?|!|;|:]) ","\\1 ",output)
-    output <- gsub(" ([\\.|?|!])","\\1",output)
+    output <- gsub(" ([\\.|, |?|!|;|:]) ", "\\1 ", output)
+    output <- gsub(" ([\\.|?|!])", "\\1", output)
     
     # Catch remaining encoding issues
-    output <- gsub("\U0097|\U0096","-",output)
+    output <- gsub("\U0097|\U0096", "-", output)
     
     return(output)
     
 }
 
-########## SHINY FUNCTIONS
+# Call gen_text() to get headline
+gen_headline <- function(max_words = 20) {
+    headline <- gen_text(max_words, stop_prob = 1)
+    headline <- gsub("(\\b[a-z]{1})", "\\U\\1", headline, perl = TRUE)
+    headline <- gsub("'([A-Z])", "\\L\\1", headline, perl = TRUE)
+    headline <- gsub("(.*)[\\.,]", "\\1", headline)
+    return(headline)
+}
 
-# Define UI for text generator app 
+# Call gen_text() to get body of article
+gen_body <- function(max_words = 200, stop_prob = 0.5) {
+    body <- gen_text(max_words, stop_prob)
+    return(body)
+}
+
+# SHINY FUNCTIONS -----------------------------------------------------------------------
+
+# Define UI for text generator app
 ui <- fluidPage(
     
     tags$head(
         tags$style(HTML("
-                        @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
-                        @import url('//fonts.googleapis.com/css?family=Literota|Cabin:400,700');
+                        @import url('//fonts.googleapis.com/css?family=Literota|Cabin:400, 700');
+                        @import url('//fonts.googleapis.com/css?family=DM+Serif+Display:400, 700');
                         
-                        h1 {
+                        #headline {
+                        font-family: 'DM Serif Display', serif;
+                        font-size: 20pt;
+                        }
+                        #byline {
                         font-family: 'Literota', serif;
+                        font-size: 14pt;
                         font-weight: bold;
-                        font-size: 48pt;
                         }
-                        
-                        p {
-                        font-family: 'Literota', serif;
-                        font-size: 12pt;
-                        }
-
-                        #text {
+                        #body {
                         font-family: 'Literota', serif;
                         font-size: 14pt;
                         }
+                        #disclaimer {
+                        font-family: 'Literota', serif;
+                        font-size: 11pt;
+                        color: gray;
+                        }
                         
                         "))
-    ),
+        ),
     
-    # App title 
-    headerPanel("New York Times Column Generator"),
-    
-    # Sidebar layout with a input and output definitions 
+    # Sidebar layout with a input and output definitions
     sidebarLayout(
         
-        # Sidebar panel for inputs 
+        # Sidebar panel for inputs
         sidebarPanel(
             
-            # Input: Numeric entry for maximum number of words 
+            # Input: Numeric entry for maximum number of words
             numericInput(inputId = "max_words",
                          label = "Maximum number of words to generate:",
                          value = 200,
-                         step=10),
+                         step = 10),
             
-            # Input: Numeric entry for probability of stopping 
+            # Input: Numeric entry for probability of stopping
             sliderInput(inputId = "stop_prob",
                         label = "Stopping probability:",
                         min = 0,
                         max = 1,
                         value = 0.2,
-                        step=0.1),
+                        step = 0.1),
             
             actionButton(inputId="generate", label="Generate"),
             
-            # Adding the new div tag to the sidebar            
+            # Adding the new div tag to the sidebar
             tags$div(tags$br(),
                      tags$p("The text generator uses a second order Markov chain. For more information,
                             see",
@@ -132,23 +148,28 @@ ui <- fluidPage(
             
         ),
         
-        # Main panel for displaying outputs 
+        # Main panel for displaying outputs
         mainPanel(
             
-            # Output: generated text
-            textOutput("text"),
+            # Headline
+            div(textOutput("headline"), id = "headline"),
             
-            # Adding the new div tag to the sidebar            
-            tags$div(tags$br(),
-                     tags$p("These texts are randomly generated and 
-                            should not be interpreted as an endorsement of any particular idealogy.
-                            The source columns used to generate the text can be found at",
-                            tags$a(href = "https://www.nytimes.com/column/paul-krugman", "nytimes.com.")),
-                     style="color:gray;font-size:11 px;")
+            # By-line
+            div("By Paul Krugman", id = "byline"),
+            
+            # Output: generated text
+            div(textOutput("body"), id = "body"),
+            
+            # Adding the new div tag to the sidebar
+            div(p("These texts are randomly generated and
+                  should not be interpreted as an endorsement of any particular idealogy.
+                  The source columns used to generate the text can be found at",
+                  a(href = "https://www.nytimes.com/column/paul-krugman", "nytimes.com.")),
+                id = "disclaimer")
             
         )
-    )
-)
+        )
+        )
 
 # Define server logic to call gen_text
 server <- function(input, output, session) {
@@ -156,11 +177,14 @@ server <- function(input, output, session) {
     text <- eventReactive(input$generate, {
         stop_prob <- input$stop_prob
         max_words <- input$max_words
-        gen_text(max_words,stop_prob)
-    })
+        body <- gen_body(max_words, stop_prob)
+        headline <- gen_headline(20)
+        list(body = body,
+             headline = headline)
+    }, ignoreNULL = FALSE)
     
-    output$text <- renderText(text())
-    
+    output$body <- renderText(text()$body)
+    output$headline <- renderText(text()$headline)
 }
 
 shinyApp(ui, server)
