@@ -117,6 +117,8 @@ ui <- fluidPage(
                         "))
         ),
     
+    div(br()),
+    
     # Sidebar layout with a input and output definitions
     sidebarLayout(
         
@@ -140,10 +142,10 @@ ui <- fluidPage(
             actionButton(inputId="generate", label="Generate"),
             
             # Adding the new div tag to the sidebar
-            tags$div(tags$br(),
-                     tags$p("The text generator uses a second order Markov chain. For more information,
+            div(br(),
+                     p("The text generator uses a second order Markov chain. For more information,
                             see",
-                            tags$a(href = "https://worksofr.wordpress.com/2018/12/24/markov-chain-text-generator/", "WorksOfR.")),
+                            a(href = "https://worksofr.wordpress.com/2018/12/24/markov-chain-text-generator/", "WorksOfR.")),
                      style="font-size:11px;")
             
         ),

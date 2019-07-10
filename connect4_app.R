@@ -183,7 +183,16 @@ ui <- fluidPage(
     
     fluidRow(
         column(12, align = "center", textOutput("win_msg"))
+    ),
+    
+    fluidRow(
+        column(12, align = "center", 
+               div(br(),
+                   p("For more information, see",
+                     a(href = "https://worksofr.wordpress.com/2019/07/05/connect-four-minimax-algorithm/", "WorksOfR.")),
+                   style="font-size:11px; color: gray;"))
     )
+    
 )
 
 
