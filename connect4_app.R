@@ -33,7 +33,7 @@ is_win <- function(state, agent) {
     for (i in 1:max_i) {
         for (j in 1:max_j) {
             subgrid <- state[i:(i + WIN - 1), j:(j + WIN - 1)]
-            if (sum(subgrid != "_") < WIN) {
+            if (sum(subgrid == agent) < WIN) {
                 next
             }
             row_win <- any(apply(subgrid, 1, function(row) all(row == agent)))
