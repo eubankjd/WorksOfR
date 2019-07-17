@@ -28,15 +28,14 @@ get_successor_states <- function(state, agent) {
 # Determine if current state is a win state for agent by iterating over WIN x WIN subgrids
 is_win <- function(state, agent) {
     
-    if (sum(state != "_") < 7) {
-        return(FALSE)
-    }
-    
     max_i <- ROW - WIN + 1
     max_j <- COL - WIN + 1
     for (i in 1:max_i) {
         for (j in 1:max_j) {
             subgrid <- state[i:(i + WIN - 1), j:(j + WIN - 1)]
+            if (sum(subgrid != "_") < WIN) {
+                next
+            }
             row_win <- any(apply(subgrid, 1, function(row) all(row == agent)))
             col_win <- any(apply(subgrid, 2, function(col) all(col == agent)))
             diag_win <- all(diag(subgrid) == agent) | all(diag(subgrid[WIN:1,]) == agent)
@@ -70,7 +69,11 @@ get_state_value <- function(state) {
             if (num_O != 0) {
                 num_X <- 0
             }
+            if (num_X == WIN - 1) {
+                return(WIN - 1)
+            }
             max_hz_run <- max(max_hz_run, num_X)
+            
         }
     }
     
@@ -81,6 +84,9 @@ get_state_value <- function(state) {
             num_O <- sum(state[(1 + offset):(WIN + offset), col] == "O")
             if (num_O != 0) {
                 num_X <- 0
+            }
+            if (num_X == WIN - 1) {
+                return(WIN - 1)
             }
             max_vt_run <- max(max_vt_run, num_X)
         }

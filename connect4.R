@@ -3,13 +3,13 @@
 # WorksOfR.wordpress.com
 
 # Functions -----------------------------------------------------------------------------
-
 COL <- 7
 ROW <- 5
 WIN <- 4
 
-# Given state and agent, return list of successor states
+# Get a list of all successor states
 get_successor_states <- function(state, agent) {
+    
     open_cols <- which(apply(state, 2, function(col) sum(col == "_") > 0))
     open_row <- sapply(open_cols, function(col) max(which(state[, col] == "_")))
     successor_states <- mapply(function(row, col) {
@@ -20,18 +20,22 @@ get_successor_states <- function(state, agent) {
     return(successor_states)
 }
 
-# Determine if current state is a win state for agent by iterating over
-# WIN x WIN subgrids
+# Determine if current state is a win state for agent by iterating over WIN x WIN subgrids
 is_win <- function(state, agent) {
+    
     max_i <- ROW - WIN + 1
     max_j <- COL - WIN + 1
     for (i in 1:max_i) {
         for (j in 1:max_j) {
             subgrid <- state[i:(i + WIN - 1), j:(j + WIN - 1)]
+            if (sum(subgrid != "_") < WIN) {
+                next
+            }
             row_win <- any(apply(subgrid, 1, function(row) all(row == agent)))
             col_win <- any(apply(subgrid, 2, function(col) all(col == agent)))
             diag_win <- all(diag(subgrid) == agent) | all(diag(subgrid[WIN:1,]) == agent)
             win <- row_win | col_win | diag_win
+            
             if (win) {
                 return(TRUE)
             }
@@ -40,12 +44,13 @@ is_win <- function(state, agent) {
     return(FALSE)
 }
 
-# Given state, return value if state is a winning state; otherwise get heuristic
-# value for state
+# Return the value of a state
 get_state_value <- function(state) {
+    
     if (is_win(state, "X")) {
         return(1000)
     }
+    
     if (is_win(state, "O")) {
         return(-1000)
     }
@@ -59,7 +64,11 @@ get_state_value <- function(state) {
             if (num_O != 0) {
                 num_X <- 0
             }
+            if (num_X == WIN - 1) {
+                return(WIN - 1)
+            }
             max_hz_run <- max(max_hz_run, num_X)
+            
         }
     }
     
@@ -71,20 +80,21 @@ get_state_value <- function(state) {
             if (num_O != 0) {
                 num_X <- 0
             }
+            if (num_X == WIN - 1) {
+                return(WIN - 1)
+            }
             max_vt_run <- max(max_vt_run, num_X)
         }
     }
-    
     return(max(max_hz_run, max_vt_run))
-    
 }
 
-# Get minimax value of state for agent
+# Get minimax value for a state using alpha-beta pruning
 get_minimax_value <- function(state, agent, depth, min, max) {
     
-    state_value <- get_state_value(state)
     game_over <- is_win(state, "X") | is_win(state, "O") | (sum(state == "_") == 0)
     if (game_over | depth == 0) {
+        state_value <- get_state_value(state)
         return(state_value)
     }
     
@@ -92,8 +102,7 @@ get_minimax_value <- function(state, agent, depth, min, max) {
         v <- min
         successor_states <- get_successor_states(state, "X")
         for (state in successor_states) {
-            vprime <- (1 - 0.5 ^ (depth + 0.1)) * 
-                get_minimax_value(state, "O", depth - 1, v, max)
+            vprime <- (1 - 0.5 ^ depth) * get_minimax_value(state, "O", depth - 1, v, max)
             if (vprime > v) {
                 v <- vprime
             }
@@ -108,7 +117,7 @@ get_minimax_value <- function(state, agent, depth, min, max) {
         v <- max
         successor_states <- get_successor_states(state, "O")
         for (state in successor_states) {
-            vprime <- (1 - 0.5 ^ (depth + 0.1)) * get_minimax_value(state, "X", depth - 1, min, v)
+            vprime <- (1 - 0.5 ^ depth) * get_minimax_value(state, "X", depth - 1, min, v)
             if (vprime < v) {
                 v <- vprime
             }
@@ -120,11 +129,10 @@ get_minimax_value <- function(state, agent, depth, min, max) {
     }
 }
 
-# Convenience function for X moves
+# Update state given X column selection
 drop_in_col <- function(state, col) {
     open_row <- sapply(col, function(col) max(which(state[, col] == "_")))
     state[open_row, col] <- "X"
-    print(state)
     return(state)
 }
 
